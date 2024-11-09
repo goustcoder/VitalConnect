@@ -4,6 +4,16 @@
     padding: 0;
     font-family: "Host Grotesk", sans-serif;
 }
+.res{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-left: 42%;
+   
+}
+.res-from{
+    display: none;
+}
 .main-content{
     width: 100%;
     background-color: white;
@@ -411,13 +421,76 @@
     display: none;
     padding: 20px;
     border: 1px solid #ddd;
-    width: 300px;
+    border-radius: 10px;
+    color: #fff;
+    width: 280px;
+    height: 300px;
     margin: 20px auto;
-    position: relative;
-    background-color: #fff;
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.6);
     z-index: 10;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;   */
+    align-items: center;
+    backdrop-filter: blur(50px);
+
   }
+  .from-heading{
+    font-size: 37px;
+    margin-bottom: 30px;
+  }
+
+  .input-con{
+
+  display: flex;
+  width:100%;
+  flex-direction: column;
+  }
+
+
+.label{
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0.3rem;
   
+
+}
+
+.input{
+    padding: 0.5rem  ;
+    border-radius: 10px;
+    border: none;
+}
+  
+.btn-con{
+    display: flex;
+    justify-content: center;
+
+}
+
+
+
+.btn-con button{
+ height: 40px;
+ width: 100px;
+  margin: 1rem;
+  font-size: 15px;
+  font-weight:500;
+  border-radius: 10px;
+  border: 3px solid white;
+  cursor: pointer;
+  background: none;
+  color: #fff;
+  transition: 0.2s linear;
+}
+
+.btn-con button:hover{
+    background-color: #fff;
+    color: black;
+
+}
+
   .close-btn {
     position: absolute;
     top: 10px;
@@ -430,7 +503,7 @@
   }
   
   .close-btn:hover {
-    color: #ff0000;
+    color: #ffffff;
   }
   /* Hide the alert by default */
 .alert-box {
@@ -444,6 +517,7 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
+
   }
   
   /* Alert box styling */

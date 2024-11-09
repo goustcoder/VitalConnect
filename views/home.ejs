@@ -48,18 +48,25 @@
   </div>
 <!-- 
   admin from -->
-  <div id="adminForm">
-    <button id="closeFormBtn" class="close-btn">X</button>
-    <h2>Admin Login</h2>
-    <form id="loginForm" method="POST" action="/adminLogin">
-      <label for="regId">Registration ID:</label>
-      <input type="text" id="regId" name="regId" required>
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
-      
-      <button type="submit">Login</button>
-      <button type="button" id="clearFormBtn" class="clear-btn">Clear</button>
-    </form>
+  <div class="res-from  res" id="res-from">
+    <div id="adminForm">
+      <button id="closeFormBtn" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+      <h2 class="from-heading">Admin Login</h2>
+  
+      <form id="loginForm" method="POST" action="/adminLogin">
+       <div class="input-con">
+        <label class="label"    for="regId">Registration ID:</label>
+        <input class="input" type="text" id="regId" name="regId" required>
+        <label class="label" for="password">Password:</label>
+        <input class="input" type="password" id="password" name="password" required>
+        
+       </div>
+        <div class="btn-con">
+          <button type="submit">Login</button>
+        <button type="button" id="clearFormBtn" class="clear-btn">Clear</button>
+        </div>
+      </form>
+    </div>
   </div>
   
   
