@@ -210,3 +210,29 @@ h2 {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+.back{
+   
+    width: 100%;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.home-button {
+    background-color: #ff4d4d; /* Red background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Space inside button */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
+  }
+  
+  .home-button:hover {
+    background-color: #e60000; /* Darker red on hover */
+  }
+  
