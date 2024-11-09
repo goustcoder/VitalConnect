@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank Admin Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <i class="fas fa-heartbeat"></i>
+            Central Blood Bank Admin
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard-grid">
+            <div class="card">
+                <h2>Blood Bank Information</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Admin ID</div>
+                        <div class="info-value">12345</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Blood Bank Name</div>
+                        <div class="info-value">Central Blood Bank</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Location</div>
+                        <div class="info-value">Los Angeles, California</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Address</div>
+                        <div class="info-value">1234 Main St</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Contact</div>
+                        <div class="info-value">+1 234 567 890</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Service Hours</div>
+                        <div class="info-value">9 AM - 5 PM</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Quick Stats</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">156</div>
+                        <div class="stat-label">Total Donors</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Blood Types</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 2rem;">
+            <h2>Blood Inventory</h2>
+            
+            <div class="instructions">
+                <h3>Managing Blood Inventory</h3>
+                <p>To update the blood inventory levels:</p>
+                <div class="instruction-step">
+                    <span class="step-number">1</span>
+                    <span>Select the desired blood type button from the grid below</span>
+                </div>
+                <div class="instruction-step">
+                    <span class="step-number">2</span>
+                    <span>Just tap on The Desire Blood Type</span>
+                </div>
+                <div class="instruction-step">
+                    <span class="step-number">3</span>
+                    <span>The status indicator will automatically update based on available units</span>
+                </div>
+            </div>
+
+            <div class="blood-types">
+                <div class="blood-type-btn">
+                    <div class="blood-type">A+</div>
+                    <div class="blood-status">
+                        <span class="status-indicator available"></span>
+                        Available
+                    </div>
+                </div>
+                <div class="blood-type-btn">
+                    <div class="blood-type">A-</div>
+                    <div class="blood-status">
+                        <span class="status-indicator low"></span>
+                        Not Available
+                    </div>
+                </div>
+                <div class="blood-type-btn">
+                    <div class="blood-type">B+</div>
+                    <div class="blood-status">
+                        <span class="status-indicator available"></span>
+                        Available
+                    </div>
+                </div>
+                <div class="blood-type-btn">
+                    <div class="blood-type">B-</div>
+                    <div class="blood-status">
+                        <span class="status-indicator available"></span>
+                        Available
+                    </div>
+                </div>
+                <div class="blood-type-btn">
+                    <div class="blood-type">AB+</div>
+                    <div class="blood-status">
+                        <span class="status-indicator low"></span>
+                        Not Available
+                    </div>
+                </div>
+                <div class="blood-type-btn">
+                    <div class="blood-type">AB-</div>
+                    <div class="blood-status">
+                        <span class="status-indicator available"></span>
+                        Available
+                    </div>
+                </div>
+                <div class="blood-type-btn">
+                    <div class="blood-type">O+</div>
+                    <div class="blood-status">
+                        <span class="status-indicator available"></span>
+                        Available
+                    </div>
+                </div>
+                <div class="blood-type-btn">
+                    <div class="blood-type">O-</div>
+                    <div class="blood-status">
+                        <span class="status-indicator low"></span>
+                        Not Available
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
