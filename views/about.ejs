@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/about.css">
+    <link rel="icon" href="https://i.imgur.com/s5KplS1.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VITAL CONNECT-Information about blood</title>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img class="logoOne" src="https://i.imgur.com/9xI1y9V.png" alt="Blood Donation Logo" />
+        </div>
+        <div class="nav-options">
+            <ul>
+                <li>
+                  <a href="/about"><button class="nav-bt">About</button></a>
+                </li>
+                <li>
+                  <a href="#">
+                    <button class="nav-bt" onclick="showUnderDevelopmentAlert()">Donate</button>
+                  </a>
+                  <div id="alertBox" class="alert-box">
+                    <div class="alert-content">
+                      <p>Under Development</p>
+                      <button onclick="closeAlert()">Close</button>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <a href="/blood"><button class="nav-bt">Find Blood</button></a>
+                </li>
+                <li>
+                  <a href="#"  id="adminLink"><button class="nav-bt">Blood Admin</button></a>
+                </li>
+              </ul>
+        </div>
+    </nav>
+
+    <!-- Blood Information Section -->
+    <section class="blood-info">
+        <img src="https://i.imgur.com/m57D1eW.png" alt="Doctor with clipboard" class="doctor-image" referrerpolicy="no-referrer" />
+        <div class="blood-text">
+            <h2>Basic Information About Blood</h2>
+            <p><strong>What is Blood?</strong> Blood is a fluid in our body that delivers essential substances like oxygen, nutrients, and hormones to cells and removes waste products.</p>
+            <ul>
+                <li><strong>Red Blood Cells (RBCs):</strong> Carry oxygen from the lungs to the rest of the body.</li>
+                <li><strong>White Blood Cells (WBCs):</strong> Help fight infections.</li>
+                <li><strong>Platelets:</strong> Aid in blood clotting to stop bleeding.</li>
+                <li><strong>Plasma:</strong> A yellowish liquid that carries proteins, hormones, and waste.</li>
+            </ul>
+            <p><strong>Blood Types:</strong> There are four main blood groups—A, B, AB, and O—each with a positive or negative Rh factor.</p>
+            <p><strong>Importance of Blood Donation:</strong> Blood donations are critical for surgeries, trauma care, and cancer treatment.</p>
+        </div>
+        <img src="https://i.imgur.com/y05jJHI.png" alt="Female doctor" class="doctor-image" referrerpolicy="no-referrer"/>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="video-container">
+            <video autoplay loop muted plays-inline>
+                <source src="https://i.imgur.com/M4RqcMX.mp4" type="video/mp4" >
+            </video>
+        </div>
+        <div class="slogan-container">
+            <img src="https://i.imgur.com/Iq4espm.png" alt="Blood donation slogan" referrerpolicy="no-referrer">
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2 class="section-title">About the Donation Process</h2>
+        <div class="faq-container">
+            <div class="faq-card">
+                <h3>Who is eligible to donate blood?</h3>
+                <p>Most healthy individuals aged 18-65, weighing at least 50 kg, can donate. Eligibility may vary by country.</p>
+            </div>
+            <div class="faq-card">
+                <h3>How often can I donate blood?</h3>
+                <p>Whole blood can be donated every 8 weeks. Plasma and platelet donation intervals may differ, with plasma donations allowed every 2 weeks in some places.</p>
+            </div>
+            <div class="faq-card">
+                <h3>Can I donate if I have recently traveled?</h3>
+                <p>Travel to certain regions or recent vaccinations may require a waiting period. Check with the donation center for specific deferrals.</p>
+            </div>
+            <div class="faq-card">
+                <h3>Where can I find a nearby blood donation center?</h3>
+                <p>Use online tools or blood bank websites to locate nearby centers. Many organizations also provide mobile donation drives and apps for convenience.</p>
+            </div>
+            <div class="faq-card">
+                <h3>What types of blood donations are there?</h3>
+                <p>Types include whole blood, plasma, platelets, and double red cell donations, each serving specific patient needs.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+  <div class="footer">
+    <div class="usefull-links">
+      <div class="links">
+        <h3>Looking For Blood</h3>
+        <a href="">Blood Availabity</a>
+        <a href="">Blood Bank</a>
+      </div>
+      <div class="links">
+        <h3>Want To Donate Blood</h3>
+        <a href="">About Blood Donation</a>
+        <a href="">Donnar Login</a>
+        <a href="">Blood Donaiton Camp</a>
+      </div>
+      <div class="links">
+        <h3>Login</h3>
+        <a href="">VITAL CONNECT Login</a>
+      </div>
+      <div class="links">
+        <h3>About Us</h3>
+        <a href="">About VITAL CONNECT</a>
+        <a href="">Notifications</a>
+        <a href="">Contract Us</a>
+      </div>
+    </div>
+    <div class="socialmedia-links">
+      <div class="footer-logo">
+        <img src="https://i.imgur.com/9xI1y9V.png" alt="" referrerpolicy="no-referrer">
+      </div>
+      <div class="social-icon">
+        <div class="social-icon-heading">
+          <h3>Follow Us On</h3>
+        </div>
+        <div class="social-icon-one">
+          <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+          <a href=""><i class="fa-brands fa-linkedin"></i></a>
+          <a href=""><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+    function showUnderDevelopmentAlert() {
+      document.getElementById("alertBox").style.display = "block";
+    }
+  
+    function closeAlert() {
+      document.getElementById("alertBox").style.display = "none";
+    }
+  </script>
+</html>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
