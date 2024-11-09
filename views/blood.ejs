@@ -17,10 +17,23 @@
     </div>
     <div class="nav-option">
         <ul>
-            <li><a href=""><button class="nav-bt">About</button></a></li>
-            <li><a href=""><button class="nav-bt">Donate</button></a></li>
-            <li><a href=""><button class="nav-bt">Find Blood</button></a></li>
-            <li><a href=""><button class="nav-bt">Blood Admin</button></a></li>
+            <li>
+                <a href="/"><button class="nav-bt">Home</button></a>
+              </li>
+            <li>
+                <a href="/about"><button class="nav-bt">About</button></a>
+              </li>
+              <li>
+                <a href="#"><button class="nav-bt">Donate</button></a>
+              </li>
+              <li>
+                <a href="/blood"><button class="nav-bt">Find Blood</button></a>
+              </li>
+              <li>
+                <a href="#" id="adminLink">
+                  <button class="nav-bt" onclick="showAlert()">Blood Admin</button>
+                </a>
+              </li>
         </ul>
     </div>
 </div>
@@ -90,10 +103,10 @@
                         <% results.forEach((result, index) => { %>
                             <tr>
                                 <td><%= index + 1 %></td>
-                                <td><%= result.blood_bank_name %><br>Location: <%= result._city %>, <%= result._district %>, <%= result._state %></td>
+                                <td><%= result._blood_bank_name %><br>Location: <%= result._city %>, <%= result._district %>, <%= result._state %></td>
                                 <td><%= result.available_blood_group.join(', ') %></td>
-                                <td><%= result.contact_info %></td>
-                                <td><%= result.address %></td>
+                                <td><%= result._contact_no %></td>
+                                <td><%= result._address %></td>
                             </tr>
                         <% }); %>
                     </tbody>

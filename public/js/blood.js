@@ -70,5 +70,7 @@ async function loadBloodGroups() {
         }
     }
 }
-
+function showAlert() {
+    alert(" Can't Access from here!");
+  }
 console.log("hi");
