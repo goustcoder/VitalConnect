@@ -4,8 +4,7 @@
     padding: 0;
     font-family: "Host Grotesk", sans-serif;
 }
-body{
-    height: 100vh;
+.main-content{
     width: 100%;
     background-color: white;
 }
