@@ -1,23 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
  /* Basic page styling */
- body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f7fa;
+ *{
     margin: 0;
     padding: 0;
+    font-family: "Host Grotesk", sans-serif;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
+ body {
+    background: linear-gradient(rgba(17, 17, 17, 0.5),rgba(27, 25, 25, 
+    0.5)), url("https://thalassaemia.org.cy/wp-content/uploads/2017/08/Blood-Safety-Availability-01-scaled.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-h1 {
-    margin: 0;
-    font-size: 2em;
+/* header */
+.navbar{
+    height: 120px;
+    width: 100%;
+    display: flex;
+    background-color: #f9f9f9;
+}
+.logo{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+.logo .logoOne{
+    height: 90px;
 }
 
+.nav-option{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    
+}
+.nav-option ul{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.nav-option ul li{
+    list-style-type: none;
+}
+.nav-option ul li a{
+    text-decoration: none;
+}
+.nav-bt{
+    height: 60px;
+    width: 120px;
+    font-size: 1.28rem;
+    border: none;
+    color: #091142;
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 0.2rem;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.15s ease-in-out;
+}
+.nav-bt:hover{
+    background-color: #401e8f;
+    color: white;
+}
+
+
+
+/* main content */
+.form-container .form-heading{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.form-container{
+    margin-top: 10px;
+}
+.form-heading h2{
+    font-size: 35px;
+    color: white;
+}
+.label{
+    font-weight: 600;
+    color: black;
+}
 .container {
     padding: 20px;
     max-width: 1200px;
@@ -25,10 +94,12 @@ h1 {
 }
 
 .form-container {
-    background-color: #fff;
+    background:transparent;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(50px);
+    background: rgba(255, 255, 255, 0.3);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
 }
 
@@ -52,48 +123,279 @@ h1 {
 
 .btn {
     padding: 12px 20px;
-    background-color: #28a745;
+    background-color: #091142;
     color: white;
-    font-size: 1.1em;
+    font-size: 20px;
+    font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
+    transition: 0.2s linear;
 }
 
 .btn:hover {
-    background-color: #218838;
+    background-color: #212c71;
+}
+/* table */
+/* Heading styles */
+.blood-bank-heading {
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-size: 32px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+    padding-left: 20px;
+    position: relative;
+    display: inline-block;
 }
 
-/* Table styling */
-table {
+.blood-bank-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 20px;
+    width: 100px;
+    height: 3px;
+    background-color: #160045;
+    border-radius: 2px;
+}
+
+/* Container styles */
+.heading-map{
+    display: flex;
     width: 100%;
+    justify-content: space-between;
+}
+.heading-map button{
+    height: 40px;
+    width: 80px;
+    border: 2px solid white;
+    background: none;
+    color: white;
+    border-radius: 8px ;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bolder;
+    transition: 0.2s linear;
+}
+.heading-map button:hover{
+    background-color: #091142;
+}
+.table-container {
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: calc(100% - 40px);
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #160045;
+    backdrop-filter: blur(10px);
+}
+
+/* Scrollbar styling */
+.table-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: #160045;
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: #160045;
+}
+
+/* Table base styles */
+.search-table {
+    background: rgba(255, 255, 255, 0.95);
     border-collapse: collapse;
-    margin-top: 30px;
+    width: 100%;
+    table-layout: fixed;
 }
 
-table th, table td {
+/* Header styles */
+.search-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.search-table th {
+    background: linear-gradient(45deg, #160045, #23006e);
+    color: white;
     padding: 15px;
-    text-align: center;
-    border: 1px solid #ddd;
+    font-size: 19px;
+    font-weight: bold;
+    /* border: 2px solid #b02a37; */
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
 }
 
-table th {
-    background-color: #333;
-    color: #fff;
+
+
+/* Cell styles */
+.search-table td {
+    padding: 12px;
+    font-size: 17px;
+    border: 1px solid #dee2e6;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-wrap: break-word;
+    background: rgba(255, 255, 255, 0.95);
+    transition: all 0.3s ease;
 }
 
-table tr:nth-child(even) {
-    background-color: #f9f9f9;
+/* Alternating row colors */
+.search-table tbody tr:nth-child(even) {
+    background-color: rgba(220, 53, 69, 0.05);
 }
 
-/* Results Section */
-.results-section {
-    margin-top: 30px;
+/* Hover effect on rows */
+.search-table tbody tr:hover {
+    background-color: rgba(220, 53, 69, 0.1);
+    transform: translateX(5px);
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Column widths */
+.search-table th:nth-child(1), .search-table td:nth-child(1) { width: 7%; }
+.search-table th:nth-child(2), .search-table td:nth-child(2) { width: 35%; }
+.search-table th:nth-child(3), .search-table td:nth-child(3) { width: 18%; }
+.search-table th:nth-child(4), .search-table td:nth-child(4) { width: 15%; }
+.search-table th:nth-child(5), .search-table td:nth-child(5) { width: 25%; }
+
+/* Blood Bank name styling */
+.search-table td:nth-child(2) {
+    font-weight: 500;
+    color: #333;
+}
+
+/* Blood type highlighting in Availability column */
+.search-table td:nth-child(3) {
+    color: #dc3545;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Contact number styling */
+.search-table td:nth-child(4) {
+    color: #0d6efd;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.search-table td:nth-child(4):hover {
+    color: #0a58ca;
+    text-decoration: underline;
+}
+
+/* Address styling */
+.search-table td:nth-child(5) {
+    color: #555;
+    font-style: italic;
+}
+
+/* No results styling */
 .no-results {
     text-align: center;
     font-size: 1.2em;
-    color: #555;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    margin: 20px;
+    color: red;
+    font-weight: bolder;
+}
+
+/* Footer */
+.footer{
+    width: 100%;
+    height: 400px;
+    background-color: #f9f9f9;
+}
+.usefull-links{
+    height: 60%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.links{
+    display: flex;
+    flex-direction: column;
+    margin: 3rem;
+}
+.links a{
+    text-decoration: none;
+    color: black;
+    opacity: 0.8;
+}
+.links a:hover{
+    text-decoration: underline;
+}
+.links h3{
+    color:#160045;
+    font-size: 20px;
+}
+.links h3,a{
+    margin-bottom: 1rem;
+}
+.socialmedia-links{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    border-top: 0.5px solid rgba(0, 0, 0, 0.162);
+}
+.footer-logo{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+.footer-logo img{
+    height: 100px;
+    margin-left: 40px;
+}
+.social-icon{
+    height: 100%;
+    width: 70%;
+    border-left: 6px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.social-icon-heding{
+    width: 100%;
+}
+.social-icon-heading h3{
+    font-size: 30px;
+ color:#160045;;
+}
+.social-icon-one{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.social-icon-one a i{
+    color: #091142;
+    font-size: 30px;
+    margin: 1rem;
+}
+.social-icon-one a i:hover{
+    color: red;
 }

@@ -3,46 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blood Bank Finder</title>
-    <link rel="stylesheet" href="/css/blood.css" /> 
-    
+    <title>VITAL CONNECT-BLOOD BACK FINDER</title>
+    <link rel="icon" href="https://i.imgur.com/s5KplS1.png">
+    <link rel="stylesheet" href="/css/blood.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
-<header>
-    <h1>Blood Bank Finder</h1>
-</header>
+<!-- Header -->
+<div class="navbar">
+    <div class="logo">
+        <img class="logoOne" src="https://i.imgur.com/9xI1y9V.png" alt="" referrerpolicy="no-referrer" />
+    </div>
+    <div class="nav-option">
+        <ul>
+            <li><a href=""><button class="nav-bt">About</button></a></li>
+            <li><a href=""><button class="nav-bt">Donate</button></a></li>
+            <li><a href=""><button class="nav-bt">Find Blood</button></a></li>
+            <li><a href=""><button class="nav-bt">Blood Admin</button></a></li>
+        </ul>
+    </div>
+</div>
 
+<!-- container-->
 <div class="container">
     <div class="form-container">
-        <h2>Select Your Criteria</h2>
+        <div class="form-heading">
+            <h2>SELECT YOUR CRITERIA</h2>
+        </div>
         <form action="/blood" method="POST">
             <div class="form-group">
-                <label for="State_Name">State</label>
+                <label class="label" for="State_Name">State</label>
                 <select id="State_Name" name="state" required onchange="loadDistricts()">
                     <option value="">Select State</option>
                     <% uniqueStates.forEach(state => { %>
                         <option value="<%= state %>"><%= state %></option>
-                    <% }) %>
+                    <% }); %>
                 </select>
             </div>
             
             <div class="form-group">
-                <label for="District_Name">District</label>
+                <label class="label" for="District_Name">District</label>
                 <select id="District_Name" name="district" required onchange="loadCities()">
                     <option value="">Select District</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="City_Name">City</label>
+                <label class="label" for="City_Name">City</label>
                 <select id="City_Name" name="city" required onchange="loadBloodGroups()">
                     <option value="">Select City</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="Blood_Group">Blood Group</label>
+                <label class="label" for="Blood_Group">Blood Group</label>
                 <select id="Blood_Group" name="bloodGroup" required>
                     <option value="">Select Blood Group</option>
                 </select>
@@ -54,32 +69,36 @@
 
     <!-- Results Section -->
     <div class="results-section">
+        <div class="heading-map">
+            <h2 style="color: white; margin-bottom: 10px; font-size: 28px;">Blood Bank Results: </h2>
+            <button>MAP</button>
+        </div>
+        <!-- table -->
         <% if (results && results.length > 0) { %>
-            <h2>Blood Bank Results</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>State</th>
-                        <th>District</th>
-                        <th>City</th>
-                        <th>Blood Group</th>
-                        <th>Blood Bank Name</th>
-                        <th>Contact Info</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% results.forEach(result => { %>
+            <div class="table-container">
+                <table class="search-table">
+                    <thead>
                         <tr>
-                            <td><%= result._state %></td>
-                            <td><%= result._district %></td>
-                            <td><%= result._city %></td>
-                            <td><%= result.available_blood_group %></td>
-                            <td><%= result.blood_bank_name %></td>
-                            <td><%= result.contact_info %></td>
+                            <th>Sl.NO</th>
+                            <th>Blood Bank</th>
+                            <th>Availability</th>
+                            <th>Contract</th>
+                            <th>Address</th>
                         </tr>
-                    <% }) %>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <% results.forEach((result, index) => { %>
+                            <tr>
+                                <td><%= index + 1 %></td>
+                                <td><%= result.blood_bank_name %><br>Location: <%= result._city %>, <%= result._district %>, <%= result._state %></td>
+                                <td><%= result.available_blood_group.join(', ') %></td>
+                                <td><%= result.contact_info %></td>
+                                <td><%= result.address %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
         <% } else { %>
             <div class="no-results">
                 <p>No results found for the selected criteria.</p>
@@ -90,6 +109,47 @@
 
 <script src="/js/blood.js"></script>
 
+<!-- Footer -->
+<div class="footer">
+    <div class="usefull-links">
+        <div class="links">
+            <h3>Looking For Blood</h3>
+            <a href="">Blood Availabity</a>
+            <a href="">Blood Bank</a>
+        </div>
+        <div class="links">
+            <h3>Want To Donate Blood</h3>
+            <a href="">About Blood Donation</a>
+            <a href="">Donnar Login</a>
+            <a href="">Blood Donaiton Camp</a>
+        </div>
+        <div class="links">
+            <h3>Login</h3>
+            <a href="">VITAL CONNECT Login</a>
+        </div>
+        <div class="links">
+            <h3>About Us</h3>
+            <a href="">About VITAL CONNECT</a>
+            <a href="">Notifications</a>
+            <a href="">Contract Us</a>
+        </div>
+    </div>
+    <div class="socialmedia-links">
+        <div class="footer-logo">
+            <img src="https://i.imgur.com/9xI1y9V.png" alt="" referrerpolicy="no-referrer">
+        </div>
+        <div class="social-icon">
+            <div class="social-icon-heading">
+                <h3>Follow Us On</h3>
+            </div>
+            <div class="social-icon-one">
+                <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
