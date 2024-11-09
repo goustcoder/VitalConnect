@@ -155,3 +155,88 @@ app.post('/blood', async (req, res) => {
         await client.close();
     }
 });
+
+// Admin credentials
+const adminCredentials = {
+    regId: "admin123",
+    password: "securePass"
+};
+
+// Middleware to authenticate admin based on regId and password
+async function adminAuth(req, res, next) {
+    const { regId, password } = req.body;
+
+    if (!ObjectId.isValid(regId)) {
+        return res.status(400).send("Invalid Registration ID format.");
+    }
+
+    try {
+        await client.connect();
+        const db = client.db("Blood");
+        const collection = db.collection("blood_banks");
+
+        // Validate regId in the database
+        const adminData = await collection.findOne({ _id: new ObjectId(regId) });
+
+        if (adminData) {
+            req.adminData = adminData;
+            return next();
+        } else {
+            res.status(401).send("Invalid Registration ID or Password");
+        }
+    } catch (error) {
+        console.error("Error during admin authentication:", error);
+        res.status(500).send("Server Error");
+    } finally {
+        await client.close();
+    }
+}
+
+// Route to handle admin login and render admin page
+app.post('/adminLogin', adminAuth, (req, res) => {
+    res.render('admin.ejs', { adminData: req.adminData });
+});
+
+// Route to render admin page directly
+app.get('/admin', (req, res) => {
+    res.render('admin.ejs', { adminData: null });
+});
+
+// PUT request to update blood groups for admin actions (add/remove blood group)
+app.put('/update-blood-group/:adminId/:bloodGroup/:action', async (req, res) => {
+    const { adminId, bloodGroup, action } = req.params;
+
+    // Convert adminId to ObjectId for querying MongoDB
+    const bloodGroupIdObj = new ObjectId(adminId);
+
+    try {
+        await client.connect();
+        const db = client.db("Blood");
+        const collection = db.collection("blood_banks");
+
+        // Find and update the blood bank document
+        const bloodBank = await collection.findOne({ "_id": bloodGroupIdObj });
+
+        if (bloodBank) {
+            if (action === 'add') {
+                await collection.updateOne(
+                    { "_id": bloodGroupIdObj },
+                    { $addToSet: { "available_blood_group": bloodGroup } }
+                );
+            } else if (action === 'remove') {
+                await collection.updateOne(
+                    { "_id": bloodGroupIdObj },
+                    { $pull: { "available_blood_group": bloodGroup } }
+                );
+            }
+            res.json({ success: true, message: `Blood group ${action}ed successfully!` });
+        } else {
+            res.status(404).json({ success: false, message: 'Blood bank not found' });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: 'An error occurred' });
+    } finally {
+        await client.close();
+    }
+});

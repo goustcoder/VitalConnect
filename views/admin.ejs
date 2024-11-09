@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/admin.css" /> 
+</head>
+<body>
+    <div class="admin-container">
+        <div class="header">
+            <h1>Welcome to the Admin Dashboard</h1>
+            <button class="button">Log Out</button>
+        </div>
+
+        <div class="content">
+            <% if(adminData) { %>
+                <div class="card">
+                    <h3>Admin ID: <%= adminData._id %></h3>
+                    <p>Blood Bank Name: <%= adminData._blood_bank_name %></p>
+                    <p>State: <%= adminData._state %></p>
+                    <p>District: <%= adminData._district %></p>
+                    <p>City: <%= adminData._city %></p>
+                    <p>Address: <%= adminData._address %></p>
+                    <p>Contact No: <%= adminData._contact_no %></p>
+                    <p>Mobile: <%= adminData._mobile %></p>
+                    <p>Service Time: <%= adminData._service_time %></p>
+                    <p>Available Blood Groups: <%= adminData.available_blood_group.join(', ') %></p>
+                </div>
+            <% } %>
+
+            <!-- Blood Group Section -->
+            <h1>Blood Groups</h1>
+            <div class="blood-group-buttons">
+                <% 
+                    // Define all blood groups here
+                    const allBloodGroups = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-', 'A1+', 'A1-', 'A2+', 'A2-', 'Bombay Blood Group']; 
+                %>
+                <% allBloodGroups.forEach(bloodGroup => { %>
+                    <button 
+                        style="background-color: <%= adminData.available_blood_group.includes(bloodGroup) ? 'green' : 'red' %>;"
+                        onclick="confirmAction('<%= adminData._id %>', '<%= bloodGroup %>', 
+                            '<%= adminData.available_blood_group.includes(bloodGroup) ? 'remove' : 'add' %>')">
+                        <%= bloodGroup %>
+                    </button>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+    
+   <script src="/js/admin.js"></script>
+</body>
+</html>
