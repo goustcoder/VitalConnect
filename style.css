@@ -1,0 +1,408 @@
+@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Host Grotesk", sans-serif;
+}
+.main-content{
+    width: 100%;
+    background-color: white;
+}
+/* header */
+.navbar{
+    height: 120px;
+    width: 100%;
+    display: flex;
+    background-color: #f9f9f9;
+}
+.logo{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+.logo .logoOne{
+    height: 90px;
+}
+
+.nav-option{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    
+}
+.nav-option ul{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.nav-option ul li{
+    list-style-type: none;
+}
+.nav-option ul li a{
+    text-decoration: none;
+}
+.nav-bt{
+    height: 60px;
+    width: 120px;
+    font-size: 1.28rem;
+    border: none;
+    color: #091142;
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 0.2rem;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.15s ease-in-out;
+}
+.nav-bt:hover{
+    background-color: #401e8f;
+    color: white;
+}
+/* why donation */
+.why-donation{
+    height: 460px;
+    width: 100%;
+    background-color: #091142;
+    display: flex;
+}
+.heading-context{
+    height: 68px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 6px solid red;
+}
+.new{
+    height: 290px;
+    width: 630px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.context{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px;
+}
+.context h2{
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 1.2rem;
+}
+.context p{
+    margin-top: 1rem;
+    font-size: 15px;
+    color: white;
+}
+.context-photo{
+    height: 100%;
+    width: 50%;
+    /* display: flex; */
+    overflow: hidden;
+}
+.context-photo img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* type of donation */
+
+.type-of-donation{
+    height: 400px;
+    width: 100%;
+    background-color: #f5f5f5;
+    margin-top: 1rem;
+}
+.defi{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0.5rem 0 0.5rem 0;
+}
+.type-heding{
+    width: 27%;
+    border-bottom: 6px solid red;
+    margin-bottom: 0.6rem;
+}
+
+.defi h2{
+    font-size: 45px;
+    margin-bottom: 0.5rem;
+}
+.creteria{
+    margin-top: 0.5rem;
+    width: 100%;
+    height: 60%;
+    display: flex;
+    text-align: center;
+}
+.creteria-one{
+    height: 100%;
+    width: 33.33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.creteria-two{
+    height: 100%;
+    width: 33.33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.creteria-three{
+    height: 100%;
+    width: 33.33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.div-one{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.div-one h2{
+    opacity: 0.7;
+}
+.div-two h2{
+    opacity: 0.7;
+}
+.div-two{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+/* blood bag wiht des */
+.blood-bag-with-des{
+    margin-top: 1rem;
+    height: 500px;
+    width: 100%;
+    background-color: #f5f5f5;
+}
+.des-of-bloodtype{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.bloodtype-heading{
+    width: 20%;
+    border-bottom: 6px solid red;
+    margin-bottom: 1rem;
+}
+.bloodtype-heading h2{
+    font-size: 45px;
+    font-weight: bolder;
+}
+.bloodtype-para{
+    width: 50%;
+}
+.bloodtype-para p{
+    font-size: 20px;
+    opacity: 0.8;
+    line-height: 35px;
+}
+.blood-bag-img{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.blood-bag-img .bags img{
+    width: 100px;
+    transition: 0.25s linear;
+    margin-left: 2rem;
+}
+.blood-bag-img .bags img:hover{
+    width: 110px;
+}
+/* conpatible-blood */
+.conpatible-blood{
+    height: 500px;
+    width: 100%;
+    margin-top: 1rem;
+    background-color: #f5f5f5;
+    display: flex;
+}
+.doc-img{
+    height: 100%;
+    width: 50%;
+    display: flex;
+}
+.doc-img img{
+    height: 80%;
+}
+.doc-img-one{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.doc-dese{
+    height: 100%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.doc-dese-one{
+    border-left: 6px solid red;
+}
+.doc-dese p{
+    font-size: 20px;
+    margin-left: 25px;
+}
+.compatible-table{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.table-heading{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.table-img{
+    overflow: hidden;
+}
+.table-img img{
+    height: 420px;
+}
+/* extra div */
+.extra-div{
+    height: 300px;
+    width: 100%;
+    background-color: #091142;
+    margin-top: 1rem;
+    display: flex;
+}
+.extra-one{
+ height: 100%;
+ width: 60%;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+}
+.extra-one p{
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 30px;
+}
+.extra-one h1{
+    font-size: 50px;
+    color: #00acdb;
+}
+.extra-two{
+    height: 100%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+}
+.extra-two img{
+    height: 250px;
+    margin-left: 40px;
+}
+/* Footer */
+.footer{
+    width: 100%;
+    height: 400px;
+    background-color: #f9f9f9;
+}
+.usefull-links{
+    height: 60%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.links{
+    display: flex;
+    flex-direction: column;
+    margin: 3rem;
+}
+.links a{
+    text-decoration: none;
+    color: black;
+    opacity: 0.8;
+}
+.links a:hover{
+    text-decoration: underline;
+}
+.links h3{
+    color:#160045;
+    font-size: 20px;
+}
+.links h3,a{
+    margin-bottom: 1rem;
+}
+.socialmedia-links{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    border-top: 0.5px solid rgba(0, 0, 0, 0.162);
+}
+.footer-logo{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+.footer-logo img{
+    height: 100px;
+    margin-left: 40px;
+}
+.social-icon{
+    height: 100%;
+    width: 70%;
+    border-left: 6px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.social-icon-heding{
+    width: 100%;
+}
+.social-icon-heading h3{
+    font-size: 30px;
+ color:#160045;;
+}
+.social-icon-one{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.social-icon-one a i{
+    color: #091142;
+    font-size: 30px;
+    margin: 1rem;
+}
+.social-icon-one a i:hover{
+    color: red;
+}
