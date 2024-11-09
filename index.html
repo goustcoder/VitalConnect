@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VITAL CONNECT-BLOOD BACK FINDER</title>
+    <link rel="icon" href="https://i.imgur.com/s5KplS1.png">
+    <link rel="stylesheet" href="style.css" /> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<!-- Header -->
+ <div class="navbar">
+    <div class="logo">
+      <img class="logoOne" src="https://i.imgur.com/9xI1y9V.png" alt="" referrerpolicy="no-referrer" />
+    </div>
+    <div class="nav-option">
+      <ul>
+        <li>
+          <a href=""><button class="nav-bt">About</button></a>
+        </li>
+        <li>
+          <a href=""><button class="nav-bt">Donate</button></a>
+        </li>
+        <li>
+          <a href=""><button class="nav-bt">Find Blood</button></a>
+        </li>
+        <li>
+          <a href=""><button class="nav-bt">Blood Admin</button></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+<!-- container-->
+
+<div class="container">
+    <div class="form-container">
+        <div class="form-heading">
+            <h2>SELECT YOUR CRITERIA</h2>
+        </div>
+        <form action="/blood" method="POST">
+            <div class="form-group">
+                <label class="label" for="State_Name">State</label>
+                <select id="State_Name" name="state" required onchange="loadDistricts()">
+                    <option value="">Select State</option>
+                    <!-- Placeholder options, replace with real data in production -->
+                    <option value="State1">State1</option>
+                    <option value="State2">State2</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="label" for="District_Name">District</label>
+                <select id="District_Name" name="district" required onchange="loadCities()">
+                    <option value="">Select District</option>
+                    <!-- Placeholder options, replace with real data in production -->
+                    <option value="District1">District1</option>
+                    <option value="District2">District2</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="label" for="City_Name">City</label>
+                <select id="City_Name" name="city" required onchange="loadBloodGroups()">
+                    <option value="">Select City</option>
+                    <!-- Placeholder options, replace with real data in production -->
+                    <option value="City1">City1</option>
+                    <option value="City2">City2</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="label" for="Blood_Group">Blood Group</label>
+                <select id="Blood_Group" name="bloodGroup" required>
+                    <option value="">Select Blood Group</option>
+                    <!-- Placeholder options, replace with real data in production -->
+                    <option value="A+">A+</option>
+                    <option value="B+">B+</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Search</button>
+        </form>
+    </div>
+
+    <!-- Results Section -->
+    <div class="results-section">
+        <div class="heading-map">
+            <h2 style="color: white ; margin-bottom: 10px; font-size: 28px;">Blood Bank Results: </h2>
+            <button>MAP</button>
+        </div>
+        <!-- table -->
+        <div class="table-container">
+            <table class="search-table">
+                <thead>
+                    <tr>
+                        <th>Sl.NO</th>
+                        <th>Blood Bank</th>
+                        <th>Availability</th>
+                        <th>Contract</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>G.B. Pant Hospital Blood bank<br>Location: Port Blair, SOUTH ANDAMAN, Andaman And Nicobar Islands</td>
+                        <td>AB-, O+, A+, AB+, B+</td>
+                        <td>03192 230628</td>
+                        <td>Atlanta Point Near Cellular Jail P.O. Aberdeen Bazaar</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>G.B. Pant Hospital Blood bank<br>Location: Port Blair, SOUTH ANDAMAN, Andaman And Nicobar Islands</td>
+                        <td>AB-, O+, A+, AB+, B+</td>
+                        <td>03192 230628</td>
+                        <td>Atlanta Point Near Cellular Jail P.O. Aberdeen Bazaar</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>G.B. Pant Hospital Blood bank<br>Location: Port Blair, SOUTH ANDAMAN, Andaman And Nicobar Islands</td>
+                        <td>AB-, O+, A+, AB+, B+</td>
+                        <td>03192 230628</td>
+                        <td>Atlanta Point Near Cellular Jail P.O. Aberdeen Bazaar</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>G.B. Pant Hospital Blood bank<br>Location: Port Blair, SOUTH ANDAMAN, Andaman And Nicobar Islands</td>
+                        <td>AB-, O+, A+, AB+, B+</td>
+                        <td>03192 230628</td>
+                        <td>Atlanta Point Near Cellular Jail P.O. Aberdeen Bazaar</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>G.B. Pant Hospital Blood bank<br>Location: Port Blair, SOUTH ANDAMAN, Andaman And Nicobar Islands</td>
+                        <td>AB-, O+, A+, AB+, B+</td>
+                        <td>03192 230628</td>
+                        <td>Atlanta Point Near Cellular Jail P.O. Aberdeen Bazaar</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>G.B. Pant Hospital Blood bank<br>Location: Port Blair, SOUTH ANDAMAN, Andaman And Nicobar Islands</td>
+                        <td>AB-, O+, A+, AB+, B+</td>
+                        <td>03192 230628</td>
+                        <td>Atlanta Point Near Cellular Jail P.O. Aberdeen Bazaar</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>G.B. Pant Hospital Blood bank<br>Location: Port Blair, SOUTH ANDAMAN, Andaman And Nicobar Islands</td>
+                        <td>AB-, O+, A+, AB+, B+</td>
+                        <td>03192 230628</td>
+                        <td>Atlanta Point Near Cellular Jail P.O. Aberdeen Bazaar</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Message when no results found -->
+        <div class="no-results">
+            <p>No results found for the selected criteria.</p>
+        </div>
+    </div>
+</div>
+
+<script src="/js/blood.js"></script>
+
+
+
+<!-- Footer -->
+<div class="footer">
+    <div class="usefull-links">
+      <div class="links">
+        <h3>Looking For Blood</h3>
+        <a href="">Blood Availabity</a>
+        <a href="">Blood Bank</a>
+      </div>
+      <div class="links">
+        <h3>Want To Donate Blood</h3>
+        <a href="">About Blood Donation</a>
+        <a href="">Donnar Login</a>
+        <a href="">Blood Donaiton Camp</a>
+      </div>
+      <div class="links">
+        <h3>Login</h3>
+        <a href="">VITAL CONNECT Login</a>
+      </div>
+      <div class="links">
+        <h3>About Us</h3>
+        <a href="">About VITAL CONNECT</a>
+        <a href="">Notifications</a>
+        <a href="">Contract Us</a>
+      </div>
+    </div>
+    <div class="socialmedia-links">
+      <div class="footer-logo">
+        <img src="https://i.imgur.com/9xI1y9V.png" alt="" referrerpolicy="no-referrer">
+      </div>
+      <div class="social-icon">
+        <div class="social-icon-heading">
+          <h3>Follow Us On</h3>
+        </div>
+        <div class="social-icon-one">
+          <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+          <a href=""><i class="fa-brands fa-linkedin"></i></a>
+          <a href=""><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
