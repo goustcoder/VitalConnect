@@ -3,4 +3,3 @@ document.getElementById("adminLink").addEventListener("click", function(event) {
     document.getElementById("adminForm").style.display = "block";
 });
 
-console.log('hello');
