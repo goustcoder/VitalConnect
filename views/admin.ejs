@@ -3,51 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="/css/admin.css" /> 
+    <title>Central Blood Bank Admin</title>
+    <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
-    <div class="admin-container">
-        <div class="header">
-            <h1>Welcome to the Admin Dashboard</h1>
-            <button class="button">Log Out</button>
+    <nav>
+        <div class="logo">
+            Central Blood Bank Admin
         </div>
+    </nav>
 
-        <div class="content">
-            <% if(adminData) { %>
+    <div class="container">
+        <% if(adminData) { %>
+            <div class="dashboard-grid">
                 <div class="card">
-                    <h3>Admin ID: <%= adminData._id %></h3>
-                    <p>Blood Bank Name: <%= adminData._blood_bank_name %></p>
-                    <p>State: <%= adminData._state %></p>
-                    <p>District: <%= adminData._district %></p>
-                    <p>City: <%= adminData._city %></p>
-                    <p>Address: <%= adminData._address %></p>
-                    <p>Contact No: <%= adminData._contact_no %></p>
-                    <p>Mobile: <%= adminData._mobile %></p>
-                    <p>Service Time: <%= adminData._service_time %></p>
-                    <p>Available Blood Groups: <%= adminData.available_blood_group.join(', ') %></p>
+                    <h2>Blood Bank Information</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">Admin ID</div>
+                            <div class="info-value"><%= adminData._id %></div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-label">Blood Bank Name</div>
+                            <div class="info-value"><%= adminData._blood_bank_name %></div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-label">Location</div>
+                            <div class="info-value"><%= adminData._city %>, <%= adminData._state %></div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-label">Address</div>
+                            <div class="info-value"><%= adminData._address %></div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-label">Contact</div>
+                            <div class="info-value"><%= adminData._contact_no %></div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-label">Service Hours</div>
+                            <div class="info-value"><%= adminData._service_time %></div>
+                        </div>
+                    </div>
                 </div>
-            <% } %>
 
-            <!-- Blood Group Section -->
-            <h1>Blood Groups</h1>
-            <div class="blood-group-buttons">
-                <% 
-                    // Define all blood groups here
-                    const allBloodGroups = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-', 'A1+', 'A1-', 'A2+', 'A2-', 'Bombay Blood Group']; 
-                %>
-                <% allBloodGroups.forEach(bloodGroup => { %>
-                    <button 
-                        style="background-color: <%= adminData.available_blood_group.includes(bloodGroup) ? 'green' : 'red' %>;"
-                        onclick="confirmAction('<%= adminData._id %>', '<%= bloodGroup %>', 
-                            '<%= adminData.available_blood_group.includes(bloodGroup) ? 'remove' : 'add' %>')">
-                        <%= bloodGroup %>
-                    </button>
-                <% }); %>
+                <div class="card">
+                    <h2>Quick Stats</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value">
+                                <%= adminData.available_blood_group ? adminData.available_blood_group.length : 0 %>
+                            </div>
+                            <div class="stat-label">Blood Types</div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-value">156</div>
+                            <div class="stat-label">Total Donors</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+
+            <div class="card" style="margin-top: 2rem;">
+                <h2>Blood Inventory</h2>
+                
+                <div class="instructions">
+                    <h3>Managing Blood Inventory</h3>
+                    <div class="instruction-step">
+                        <span class="step-number">1</span>
+                        Select the desired blood type button from the grid below
+                    </div>
+                    <div class="instruction-step">
+                        <span class="step-number">2</span>
+                        Click to toggle availability status
+                    </div>
+                    <div class="instruction-step">
+                        <span class="step-number">3</span>
+                        The status indicator will automatically update
+                    </div>
+                </div>
+
+                <div class="blood-types">
+                    <% const bloodGroups = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']; %>
+                    <% bloodGroups.forEach(bloodGroup => { 
+                        const isAvailable = adminData.available_blood_group.includes(bloodGroup);
+                    %>
+                        <div class="blood-type-btn" onclick="confirmAction('<%= adminData._id %>', '<%= bloodGroup %>', '<%= isAvailable ? 'remove' : 'add' %>')">
+                            <div class="blood-type"><%= bloodGroup %></div>
+                            <div class="blood-status">
+                                <span class="status-indicator <%= isAvailable ? 'available' : 'low' %>"></span>
+                                <%= isAvailable ? 'Available' : 'Not Available' %>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        <% } else { %>
+            <div class="card">
+                <h2>Admin Login</h2>
+                <form action="/adminLogin" method="POST" style="margin-top: 1rem;">
+                    <div style="margin-bottom: 1rem;">
+                        <label for="regId">Registration ID:</label>
+                        <input type="text" id="regId" name="regId" required style="width: 100%; padding: 0.5rem; margin-top: 0.25rem;">
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required style="width: 100%; padding: 0.5rem; margin-top: 0.25rem;">
+                    </div>
+                    <button type="submit" style="background: #dc2626; color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;">
+                        Login
+                    </button>
+                </form>
+            </div>
+        <% } %>
     </div>
-    
+
     <script src="/js/admin.js"></script>
 </body>
 </html>

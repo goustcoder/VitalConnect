@@ -4,7 +4,6 @@ function confirmAction(adminId, bloodGroup, action) {
         : `Do you want to add ${bloodGroup} to the database?`;
 
     if (confirm(confirmMessage)) {
-        // Send a request to the server with the adminId, bloodGroup, and action
         fetch(`/update-blood-group/${adminId}/${bloodGroup}/${action}`, {
             method: 'PUT',
             headers: {
@@ -15,7 +14,7 @@ function confirmAction(adminId, bloodGroup, action) {
         .then(data => {
             if (data.success) {
                 alert(`Blood group ${action}ed successfully!`);
-                location.reload(); // Reload the page to reflect changes
+                location.reload();
             } else {
                 alert('An error occurred. Please try again.');
             }
@@ -26,6 +25,3 @@ function confirmAction(adminId, bloodGroup, action) {
         });
     }
 }
-
-
-console.log('working');
