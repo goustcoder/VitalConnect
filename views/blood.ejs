@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank Finder</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        /* Basic page styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            background-color: #28a745;
+            color: white;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        table th, table td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Results Section */
+        .results-section {
+            margin-top: 30px;
+        }
+
+        .no-results {
+            text-align: center;
+            font-size: 1.2em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Blood Bank Finder</h1>
+</header>
+
+<div class="container">
+    <div class="form-container">
+        <h2>Select Your Criteria</h2>
+        <form action="/blood" method="POST">
+            <div class="form-group">
+                <label for="State_Name">State</label>
+                <select id="State_Name" name="state" required onchange="loadDistricts()">
+                    <option value="">Select State</option>
+                    <% uniqueStates.forEach(state => { %>
+                        <option value="<%= state %>"><%= state %></option>
+                    <% }) %>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="District_Name">District</label>
+                <select id="District_Name" name="district" required onchange="loadCities()">
+                    <option value="">Select District</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="City_Name">City</label>
+                <select id="City_Name" name="city" required onchange="loadBloodGroups()">
+                    <option value="">Select City</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Blood_Group">Blood Group</label>
+                <select id="Blood_Group" name="bloodGroup" required>
+                    <option value="">Select Blood Group</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Search</button>
+        </form>
+    </div>
+
+    <!-- Results Section -->
+    <div class="results-section">
+        <% if (results && results.length > 0) { %>
+            <h2>Blood Bank Results</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>State</th>
+                        <th>District</th>
+                        <th>City</th>
+                        <th>Blood Group</th>
+                        <th>Blood Bank Name</th>
+                        <th>Contact Info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% results.forEach(result => { %>
+                        <tr>
+                            <td><%= result._state %></td>
+                            <td><%= result._district %></td>
+                            <td><%= result._city %></td>
+                            <td><%= result.available_blood_group %></td>
+                            <td><%= result.blood_bank_name %></td>
+                            <td><%= result.contact_info %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <div class="no-results">
+                <p>No results found for the selected criteria.</p>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<script>
+    async function loadDistricts() {
+        const state = document.getElementById('State_Name').value;
+        const districtSelect = document.getElementById('District_Name');
+        districtSelect.innerHTML = '<option value="">Select District</option>';
+
+        if (state) {
+            try {
+                const response = await fetch(`/districts?state=${state}`);
+                const districts = await response.json();
+                districts.forEach(district => {
+                    const option = document.createElement('option');
+                    option.value = district;
+                    option.textContent = district;
+                    districtSelect.appendChild(option);
+                });
+            } catch (error) {
+                console.error("Error fetching districts:", error);
+            }
+        }
+
+        // Clear city and blood group dropdowns
+        document.getElementById('City_Name').innerHTML = '<option value="">Select City</option>';
+        document.getElementById('Blood_Group').innerHTML = '<option value="">Select Blood Group</option>';
+    }
+
+    async function loadCities() {
+        const state = document.getElementById('State_Name').value;
+        const district = document.getElementById('District_Name').value;
+        const citySelect = document.getElementById('City_Name');
+        citySelect.innerHTML = '<option value="">Select City</option>';
+
+        if (state && district) {
+            try {
+                const response = await fetch(`/cities?state=${state}&district=${district}`);
+                const cities = await response.json();
+                cities.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city;
+                    option.textContent = city;
+                    citySelect.appendChild(option);
+                });
+            } catch (error) {
+                console.error("Error fetching cities:", error);
+            }
+        }
+
+        // Clear blood group dropdown
+        document.getElementById('Blood_Group').innerHTML = '<option value="">Select Blood Group</option>';
+    }
+
+    async function loadBloodGroups() {
+        const state = document.getElementById('State_Name').value;
+        const district = document.getElementById('District_Name').value;
+        const city = document.getElementById('City_Name').value;
+        const bloodGroupSelect = document.getElementById('Blood_Group');
+        bloodGroupSelect.innerHTML = '<option value="">Select Blood Group</option>';
+
+        if (state && district && city) {
+            try {
+                const response = await fetch(`/blood-groups?state=${state}&district=${district}&city=${city}`);
+                const bloodGroups = await response.json();
+                bloodGroups.forEach(group => {
+                    const option = document.createElement('option');
+                    option.value = group;
+                    option.textContent = group;
+                    bloodGroupSelect.appendChild(option);
+                });
+            } catch (error) {
+                console.error("Error fetching blood groups:", error);
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

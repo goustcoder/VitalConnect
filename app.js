@@ -6,11 +6,152 @@ const path = require("path");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 
+//mongodb
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+// MongoDB connection string and client setup
+const uri = "mongodb+srv://jeet124:tmkLghrl9YRYiKll@cluster0.vhwo1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const client = new MongoClient(uri, {
+    serverApi: {
+        version: ServerApiVersion.v1,
+        strict: false,
+        deprecationErrors: true,
+    }
+});
 
+
+//strat server
 app.listen(8080, () => {
     console.log("Server is listening on port 8080");
 });
 
+//home page route
 app.get('/',(req,res)=>{
     res.render('home.ejs');
 })
+
+
+// Route to render blood search page with unique states
+app.get('/blood', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db("Blood");
+        const collection = db.collection("blood_banks");
+
+        // Fetch unique state names
+        const uniqueStates = await collection.distinct("_state");
+        res.render('blood.ejs', { uniqueStates, results: [] });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error fetching data");
+    } finally {
+        await client.close();
+    }
+});
+
+//Route to fetch unique districts for a specified state
+app.get('/districts', async (req, res) => {
+    const state = req.query.state;
+    if (!state) return res.status(400).send("State not specified");
+
+    try {
+        await client.connect();
+        const db = client.db("Blood");
+        const collection = db.collection("blood_banks");
+
+        // Get unique districts based on the state
+        const uniqueDistricts = await collection.distinct("_district", { _state: state });
+        res.json(uniqueDistricts);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error fetching districts");
+    } finally {
+        await client.close();
+    }
+});
+
+// Route to fetch unique cities for a specified state and district
+app.get('/cities', async (req, res) => {
+    const { state, district } = req.query;
+    if (!state || !district) return res.status(400).send("State or District not specified");
+
+    try {
+        await client.connect();
+        const db = client.db("Blood");
+        const collection = db.collection("blood_banks");
+
+        // Get unique cities based on state and district
+        const uniqueCities = await collection.distinct("_city", { _state: state, _district: district });
+        res.json(uniqueCities);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error fetching cities");
+    } finally {
+        await client.close();
+    }
+});
+
+// Route to fetch unique blood groups for specified state, district, and city
+app.get('/blood-groups', async (req, res) => {
+    const { state, district, city } = req.query;
+    if (!state || !district || !city) return res.status(400).send("State, District, or City not specified");
+
+    try {
+        await client.connect();
+        const db = client.db("Blood");
+        const collection = db.collection("blood_banks");
+
+        // Get unique blood groups based on state, district, and city
+        const uniqueBloodGroups = await collection.distinct("available_blood_group", { _state: state, _district: district, _city: city });
+        res.json(uniqueBloodGroups);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error fetching blood groups");
+    } finally {
+        await client.close();
+    }
+});
+
+// Function to search blood groups based on user input
+async function searchBloodGroups({ state, district, city, blood_group }) {
+    try {
+        await client.connect();
+        const db = client.db("Blood");
+        const collection = db.collection("blood_banks");
+
+        // Build query based on search parameters
+        let query = {};
+        if (state) query._state = state;
+        if (district) query._district = district;
+        if (city) query._city = city;
+        if (blood_group) query.available_blood_group = { $in: [blood_group] };
+
+        // Retrieve search results
+        const result = await collection.find(query).toArray();
+        return result;
+    } catch (err) {
+        console.error("Error during search:", err);
+        return [];
+    }
+}
+
+// Route to handle blood search form submission and display results
+app.post('/blood', async (req, res) => {
+    const { state, district, city, blood_group } = req.body;
+    const searchParams = { state, district, city, blood_group };
+
+    try {
+        await client.connect();
+        const db = client.db("Blood");
+        const collection = db.collection("blood_banks");
+        const uniqueStates = await collection.distinct("_state");
+
+        // Perform search and render results
+        const results = await searchBloodGroups(searchParams);
+        res.render('blood.ejs', { uniqueStates, results });
+    } catch (error) {
+        console.error("Error during blood search:", error);
+        res.status(500).send("Error searching blood groups");
+    } finally {
+        await client.close();
+    }
+});
