@@ -253,5 +253,5 @@ app.put('/update-blood-group/:adminId/:bloodGroup/:action', async (req, res) => 
 
 
 app.get('/about',(req,res)=>{
-    res.render('/views/about.ejs');
+    res.render('about.ejs');
 })

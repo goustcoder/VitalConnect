@@ -16,6 +16,9 @@
         </div>
         <div class="nav-options">
             <ul>
+              <li>
+                <a href="/"><button class="nav-bt">Home</button></a>
+              </li>
                 <li>
                   <a href="/about"><button class="nav-bt">About</button></a>
                 </li>
@@ -34,7 +37,9 @@
                   <a href="/blood"><button class="nav-bt">Find Blood</button></a>
                 </li>
                 <li>
-                  <a href="#"  id="adminLink"><button class="nav-bt">Blood Admin</button></a>
+                  <a href="#" id="adminLink">
+                    <button class="nav-bt" onclick="showAlert()">Blood Admin</button>
+                  </a>
                 </li>
               </ul>
         </div>
@@ -148,6 +153,10 @@
     function closeAlert() {
       document.getElementById("alertBox").style.display = "none";
     }
+    
+    function showAlert() {
+    alert(" Can't Access from here!");
+  }
   </script>
 </html>
     
