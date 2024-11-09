@@ -41,17 +41,20 @@
 <!-- 
   admin from -->
   <div id="adminForm">
+    <button id="closeFormBtn" class="close-btn">X</button>
     <h2>Admin Login</h2>
     <form id="loginForm" method="POST" action="/adminLogin">
-        <label for="regId">Registration ID:</label>
-        <input type="text" id="regId" name="regId" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br><br>
-        <button type="submit">Login</button>
+      <label for="regId">Registration ID:</label>
+      <input type="text" id="regId" name="regId" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      
+      <button type="submit">Login</button>
+      <button type="button" id="clearFormBtn" class="clear-btn">Clear</button>
     </form>
-</div>
+  </div>
+  
+  
 
 
   <!-- main-content -->
