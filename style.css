@@ -294,6 +294,42 @@ body{
 .table-img img{
     height: 420px;
 }
+/* extra div */
+.extra-div{
+    height: 300px;
+    width: 100%;
+    background-color: #091142;
+    margin-top: 1rem;
+    display: flex;
+}
+.extra-one{
+ height: 100%;
+ width: 60%;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+}
+.extra-one p{
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 30px;
+}
+.extra-one h1{
+    font-size: 50px;
+    color: #00acdb;
+}
+.extra-two{
+    height: 100%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+}
+.extra-two img{
+    height: 250px;
+    margin-left: 40px;
+}
 /* Footer */
 .footer{
     width: 100%;
@@ -330,6 +366,7 @@ body{
     height: 40%;
     width: 100%;
     display: flex;
+    border-top: 0.5px solid rgba(0, 0, 0, 0.162);
 }
 .footer-logo{
     height: 100%;
