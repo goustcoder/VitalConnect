@@ -5,11 +5,13 @@ app.set("view engine", "ejs");
 const path = require("path");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
+const port = process.env.PORT || 8080;
+const uri = process.env.MONGO_URI; // Retrieve MongoDB URI from environment variable
 
 //mongodb
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 // MongoDB connection string and client setup
-const uri = "mongodb+srv://jeet124:tmkLghrl9YRYiKll@cluster0.vhwo1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
 const client = new MongoClient(uri, {
     serverApi: {
         version: ServerApiVersion.v1,
@@ -20,7 +22,7 @@ const client = new MongoClient(uri, {
 
 
 //strat server
-app.listen(8080, () => {
+app.listen(port, () => {
     console.log("Server is listening on port 8080");
 });
 
