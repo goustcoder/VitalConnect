@@ -70,3 +70,5 @@ async function loadBloodGroups() {
         }
     }
 }
+
+console.log("hi");

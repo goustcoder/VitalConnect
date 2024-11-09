@@ -33,12 +33,25 @@
           <a href="/blood"><button class="nav-bt">Find Blood</button></a>
         </li>
         <li>
-          <a href=""><button class="nav-bt">Blood Admin</button></a>
+          <a href="#"  id="adminLink"><button class="nav-bt">Blood Admin</button></a>
         </li>
       </ul>
     </div>
   </div>
-
+<!-- 
+  admin from -->
+  <div id="adminForm">
+    <h2>Admin Login</h2>
+    <form id="loginForm" method="POST" action="/adminLogin">
+        <label for="regId">Registration ID:</label>
+        <input type="text" id="regId" name="regId" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+        <button type="submit">Login</button>
+    </form>
+</div>
 
 
   <!-- main-content -->
@@ -286,5 +299,5 @@
     </div>
   </div>
 </body>
-
+<script src="/js/home.js"></script>
 </html>

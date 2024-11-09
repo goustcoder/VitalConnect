@@ -26,3 +26,6 @@ function confirmAction(adminId, bloodGroup, action) {
         });
     }
 }
+
+
+console.log('working');

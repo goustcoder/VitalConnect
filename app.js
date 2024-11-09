@@ -156,6 +156,19 @@ app.post('/blood', async (req, res) => {
     }
 });
 
+//Admin backend
+
+// Route to render admin page directly
+app.get('/admin', (req, res) => {
+    res.render('admin.ejs', { adminData: null });
+});
+
+
+
+
+
+
+
 // Admin credentials
 const adminCredentials = {
     regId: "admin123",
@@ -197,10 +210,7 @@ app.post('/adminLogin', adminAuth, (req, res) => {
     res.render('admin.ejs', { adminData: req.adminData });
 });
 
-// Route to render admin page directly
-app.get('/admin', (req, res) => {
-    res.render('admin.ejs', { adminData: null });
-});
+
 
 // PUT request to update blood groups for admin actions (add/remove blood group)
 app.put('/update-blood-group/:adminId/:bloodGroup/:action', async (req, res) => {

@@ -406,3 +406,8 @@
 .social-icon-one a i:hover{
     color: red;
 }
+
+#adminForm {
+    display: none;
+    margin-top: 20px;
+}
