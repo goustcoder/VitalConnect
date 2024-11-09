@@ -79,4 +79,28 @@ password:
 securePass
 
 
-
+User
+ |
+ | Clicks 'Admin Access' or submits search form
+ V
+Frontend (HTML/EJS)
+ |
+ | Sends request to
+ V
+Backend (Express Server)
+ |
+ | Queries MongoDB Atlas
+ V
+MongoDB Atlas Database
+ |
+ | Returns data with ID/ObjectID
+ V
+Backend (Express Server)
+ |
+ | Sends response to
+ V
+Frontend (HTML/EJS)
+ |
+ | Displays data with IDs
+ V
+User views updated information
