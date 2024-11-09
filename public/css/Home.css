@@ -118,7 +118,7 @@
 /* type of donation */
 
 .type-of-donation{
-    height: 400px;
+    height: 500px;
     width: 100%;
     background-color: #f5f5f5;
     margin-top: 1rem;
@@ -134,7 +134,7 @@
     padding: 0.5rem 0 0.5rem 0;
 }
 .type-heding{
-    width: 27%;
+    width: 32%;
     border-bottom: 6px solid red;
     margin-bottom: 0.6rem;
 }
