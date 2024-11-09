@@ -1,0 +1,20 @@
+{
+  "name": "vitalconnect",
+  "version": "1.0.0",
+  "description": "Vital Connect is a web platform that empowers people across India to easily find nearby blood banks and check the availability of specific blood types. This initiative aims to bridge the gap between people in urgent need of blood and blood banks that have available stock, ensuring faster, safer, and more efficient access to life-saving resources.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "mongodb": "^6.10.0",
+    "mongoose": "^8.8.1",
+    "nodemon": "^3.1.7"
+  }
+}
