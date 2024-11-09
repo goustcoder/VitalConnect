@@ -11,5 +11,11 @@ document.getElementById("clearFormBtn").addEventListener("click", function() {
     document.getElementById("loginForm").reset();
 });
 
+function showUnderDevelopmentAlert() {
+    document.getElementById("alertBox").style.display = "block";
+  }
 
+  function closeAlert() {
+    document.getElementById("alertBox").style.display = "none";
+  }
 

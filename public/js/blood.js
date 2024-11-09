@@ -73,4 +73,12 @@ async function loadBloodGroups() {
 function showAlert() {
     alert(" Can't Access from here!");
   }
+
+  function showUnderDevelopmentAlert() {
+    document.getElementById("alertBox").style.display = "block";
+  }
+
+  function closeAlert() {
+    document.getElementById("alertBox").style.display = "none";
+  }
 console.log("hi");

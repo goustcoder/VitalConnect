@@ -250,3 +250,8 @@ app.put('/update-blood-group/:adminId/:bloodGroup/:action', async (req, res) => 
         await client.close();
     }
 });
+
+
+app.get('/about',(req,res)=>{
+    res.render('/views/about.ejs');
+})

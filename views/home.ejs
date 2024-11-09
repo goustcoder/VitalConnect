@@ -27,7 +27,15 @@
           <a href="/about"><button class="nav-bt">About</button></a>
         </li>
         <li>
-          <a href="#"><button class="nav-bt">Donate</button></a>
+          <a href="#">
+            <button class="nav-bt" onclick="showUnderDevelopmentAlert()">Donate</button>
+          </a>
+          <div id="alertBox" class="alert-box">
+            <div class="alert-content">
+              <p>Under Development</p>
+              <button onclick="closeAlert()">Close</button>
+            </div>
+          </div>
         </li>
         <li>
           <a href="/blood"><button class="nav-bt">Find Blood</button></a>
