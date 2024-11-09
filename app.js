@@ -160,7 +160,7 @@ app.post('/blood', async (req, res) => {
 
 // Route to render admin page directly
 app.get('/admin', (req, res) => {
-    res.render('admin.ejs', { adminData: null });
+    res.render('index.ejs', { adminData: null });
 });
 
 
@@ -207,7 +207,7 @@ async function adminAuth(req, res, next) {
 
 // Route to handle admin login and render admin page
 app.post('/adminLogin', adminAuth, (req, res) => {
-    res.render('admin.ejs', { adminData: req.adminData });
+    res.render('index.ejs', { adminData: req.adminData });
 });
 
 
