@@ -10,6 +10,18 @@ Choose a State from the dropdown.
 Select the desired District from the dynamically updated list.
 This allows users to quickly find blood availability information by location.
 
+use of admin page:
+
+ID:672b6b97d5410b8612ea4871, 672b6b97d5410b8612ea4872, 672b6b97d5410b8612ea4873
+
+password: securePass
+
+
+
+
+
+
+
 2. Admin Access Secure Admin Login: Only authorized personnel can access the Admin Panel to manage blood data.
 Login Requirements: Admins need a password and the organization’s unique Object ID (stored in MongoDB) to log in.
 
